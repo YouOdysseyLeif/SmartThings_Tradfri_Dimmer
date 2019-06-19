@@ -13,8 +13,9 @@
  *  Version Author		Note
  *  1.0		K Andrews	Initial release
  *  1.1		K Andrews	Added Configure button
+ *  1.2		L Gilbertson	Changed to attempt to control Tradfri On Off Button
  *
- *	This device handler works with the IKEA Tradfri Wireless Dimmer puck
+ *	This device handler works with the IKEA TRÅDFRI On/Off swtich
  *	A slow turn increased or decreased the level gradually
  *	A fast turn increases to 100% or decreases to 0% immediately
  *  
@@ -23,46 +24,60 @@
  *	then paste all the contents of this file.
  *
  *	To add the device to SmartThings press the pairing button 4 times within 5 seconds then start
- *	a search in the SmarthThings mobile app.  The divice should appear as "IKEA Tradfri Dimmer"
+ *	a search in the SmarthThings mobile app.  The divice should appear as "IKEA TRÅDFRI On/Off Button"
  *
- *	To use this device I recommend using the "Smart Lighting" SmartApp.
- *	In this SmartApp you can create a new lighting automation then follow these steps:
- *	Select the bulb(s) to control in "Which devices do you want to control"
- *	In "What do you want to do?" select "Mirror Behaviour"
- *	In "Mirror which switch?" select the dimmer
- *
- *	Now the selected lights will dim with the IKEA dimmer
  */
 
 import physicalgraph.zigbee.zcl.DataType
 
 metadata {
-    definition (name: "IKEA Dimmer", namespace: "andrews.k", author: "Kristian Andrews") {
+    definition (name: "IKEA Button", namespace: "youodysseyleif", author: "Leif Gilbertson") {
         capability "Switch"
         capability "Sensor"
         capability "Switch Level"
         capability "Configuration"
+		capability "Refresh"
+		capability "Button"
+		capability "Battery"
 
-        fingerprint profileId: "0104", inClusters: "0000, 0001, 0003, 0009, 0B05, 1000", outClusters: "0003, 0004, 0006, 0008, 0019, 1000", manufacturer: "IKEA of Sweden",model: "TRADFRI wireless dimmer",deviceJoinName: "IKEA Tradfri Dimmer"
+        //fingerprint profileId: "0104", inClusters: "0000, 0001, 0003, 0009, 0B05, 1000", outClusters: "0003, 0004, 0006, 0008, 0019, 1000", manufacturer: "IKEA of Sweden",model: "TRADFRI wireless dimmer",deviceJoinName: "IKEA Tradfri Dimmer"
         fingerprint profileId: "C05E", inClusters: "0000, 0001, 0003, 0009, 0B05, 1000", outClusters: "0003, 0004, 0006, 0008, 0019, 1000", manufacturer: "IKEA of Sweden",model: "TRADFRI wireless dimmer",deviceJoinName: "IKEA Tradfri Dimmer"
 	}
 
     tiles(scale: 2) {
-	    controlTile("mediumSlider", "device.level", "slider", height: 2, width: 4, inactiveLabel: false) {
-		    state "level", action:"switch level.setLevel"
-	    }
-	    
-	    standardTile("configure", "device.configure", decoration: "flat") {
-		    state "configure", label:'', action:"configuration.configure", icon:"st.secondary.configure"
-	    }
+        // TODO: define your main and details tiles here
+        multiAttributeTile(name:"lastAction", type: "generic", width: 6, height: 4){
+            tileAttribute ("device.battery", key: "SECONDARY_CONTROL") {
+                attributeState "battery", label:'${currentValue}% battery',icon:"st.Outdoor.outdoor3", unit:"", backgroundColors:[
+                [value: 30, color: "#ff0000"],
+                [value: 40, color: "#760000"],
+                [value: 60, color: "#ff9900"],
+                [value: 80, color: "#007600"]
+                ]
+            }
+            tileAttribute ("device.lastAction", key: "PRIMARY_CONTROL") {
+                attributeState "active", label:'${currentValue}', icon:"st.Home.home30"
+            }
 
-	    valueTile("levelValue", "device.level", height: 2, width: 2) {
-		    state "level", label:'${currentValue}', defaultState: true
-	    }
-	    
-	    main("levelValue")
-	    details(["mediumSlider","configure"])
+        }
+        //        valueTile("lastAction", "device.lastAction", width: 6, height: 2) {
+        //			state("lastAction", label:'${currentValue}')
+        //		}
+
+        valueTile("battery2", "device.battery", decoration: "flat", inactiveLabel: false, width: 5, height: 1) {
+            state("battery", label:'${currentValue}% battery', unit:"")
+        }
+        standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat", width: 1, height: 1) {
+            state "default", label:"", action:"refresh.refresh", icon:"st.secondary.refresh"
+        }
+        //        standardTile("configure", "device.configure", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
+        //            state "default", label:"bind", action:"configure"
+        //        }
+    	main "lastAction"
+    	details(["lastAction","battery2","refresh","configure"])
     }
+
+
 }
 
 // Parse incoming device messages to generate events
