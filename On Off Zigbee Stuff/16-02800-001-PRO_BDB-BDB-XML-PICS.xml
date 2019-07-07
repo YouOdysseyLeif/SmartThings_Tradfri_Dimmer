@@ -1,0 +1,1617 @@
+<!--
+
+Base Device Behavior XML PICS
+ZigBee Document 16-02800-000
+July 6th, 2016
+
+Copyright (c) ZigBee Alliance, Inc. (1996-2016).  All rights reserved.
+508 Second Street, Suite 206 Davis, CA 95616 - USA
+http://www.zigbee.org
+
+Permission is granted to members of the ZigBee Alliance to reproduce this document
+for their own use or the use of other ZigBee Alliance members only, provided this
+notice is included.  All other rights reserved.  Duplication for sale, or for
+commercial or for-profit use is strictly prohibited without the prior written consent
+of the ZigBee Alliance.
+
+Accepted by
+===========
+This document has not been accepted for release by the ZigBee Alliance Board of
+Directors
+
+Abstract
+========
+This document contains the XML PICS for the Base Device Behavior according to the generic
+XML PICS schema: 16-03902-003-Generic-PICS-XML-Schema.xsd
+
+Notice of use and disclosure
+============================
+Copyright © ZigBee Alliance, Inc. (1996-2016). All rights Reserved. This information
+within this document is the property of the ZigBee Alliance and its use and
+disclosure are restricted.
+
+Elements of ZigBee Alliance specifications may be subject to third party intellectual
+property rights, including without limitation, patent, copyright or trademark rights
+(such a third party may or may not be a member of ZigBee). ZigBee is not responsible
+and shall not be held responsible in any manner for identifying or failing to identify
+any or all such third party intellectual property rights.
+
+No right to use any ZigBee name, logo or trademark is conferred herein.  Use of any
+ZigBee name, logo or trademark requires membership in the ZigBee Alliance and
+compliance with the ZigBee Logo and Trademark Policy and related ZigBee policies.
+
+This document and the information contained herein are provided on an “AS IS” basis
+and ZigBee DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+(A) ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS
+OF THIRD PARTIES (INCLUDING WITHOUT LIMITATION ANY INTELLECTUAL PROPERTY RIGHTS
+INCLUDING PATENT, COPYRIGHT OR TRADEMARK RIGHTS) OR (B) ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NONINFRINGEMENT. IN NO
+EVENT WILL ZIGBEE BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OF
+DATA, INTERRUPTION OF BUSINESS, OR FOR ANY OTHER DIRECT, INDIRECT, SPECIAL OR
+EXEMPLARY, INCIDENTIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF ANY KIND, IN CONTRACT OR
+IN TORT, IN CONNECTION WITH THIS DOCUMENT OR THE INFORMATION CONTAINED HEREIN, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. All Company, brand and product
+names may be trademarks that are the sole property of their respective owners.  
+
+The above notice and this paragraph must be included on all copies of this document
+that are made.
+
+PICS Completion Notes
+=====================
+In each PICS <support></support> item use:
+  "true"  if the feature is supported, OR
+  "false" if the feature is NOT supported
+By default all items are not supported (false)
+
+In each PIXIT the <specification></specification> item specify as described
+  
+--><generalPICS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://./16-03902-003-Generic-PICS-XML-Schema.xsd">
+  <name>BDB</name>
+  <pixit label="Internal attributes">
+    <pixitItem>
+      <itemNumber>IA1</itemNumber>
+      <feature>bdbCommissioningGroupID: What is the list of groups the node is able to use for finding and binding?</feature>
+      <reference>5.3.1</reference>
+      <status>M</status>
+      <specification>0xffff, list of group IDs</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA2</itemNumber>
+      <feature>bdbJoinUsesInstallCodeKey: Does the Trust Center policy require all nodes to join using an install code?</feature>
+      <reference>5.3.6</reference>
+      <status cond="ZLT1">M</status>
+      <specification>False</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA3</itemNumber>
+      <feature>bdbPrimaryChannelSet: What is the primary channel set?</feature>
+      <reference>5.3.10</reference>
+      <status>M</status>
+      <specification>0x02108800, Channel mask</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA4</itemNumber>
+      <feature>bdbScanDuration: What is the scan duration?</feature>
+      <reference>5.3.11</reference>
+      <status>M</status>
+      <specification>0x05</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA5</itemNumber>
+      <feature>bdbSecondaryChannelSet: What is the secondary channel set?</feature>
+      <reference>5.3.12</reference>
+      <status>M</status>
+      <specification>0x05EF7000, Channel mask</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA6</itemNumber>
+      <feature>bdbTCLinkKeyExchangeAttemptsMax: What is the maximum number of attempts a node will try to exchange its Trust Center link key?</feature>
+      <reference>5.3.14</reference>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <specification>0x03</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA7</itemNumber>
+      <feature>bdbTCLinkKeyExchangeMethod: What is the Trust Center link key exchange method?</feature>
+      <reference>5.3.15</reference>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <specification>0x00</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA8</itemNumber>
+      <feature>bdbTrustCenterNodeJoinTimeout: What is the Trust Center node join timeout?</feature>
+      <reference>5.3.16</reference>
+      <status cond="ZLT1">M</status>
+      <specification>0x00</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>IA9</itemNumber>
+      <feature>bdbTrustCenterRequireKeyExchange: Does the Trust Center’s policy require a node to exchange its initial link key with a new link key generated by the Trust Center?</feature>
+      <reference>5.3.17</reference>
+      <status cond="ZLT1">M</status>
+      <specification>False</specification>
+    </pixitItem>
+  </pixit>
+  <pixit label="Commissioning combinations">
+    <pixitItem>
+      <itemNumber>CC1</itemNumber>
+      <feature>Can the product be stimulated to invoke touchlink commissioning only?</feature>
+      <status>O</status>
+      <specification>Yes</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC2</itemNumber>
+      <feature>Can the product be stimulated to invoke network formation only?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC3</itemNumber>
+      <feature>Can the product be stimulated to invoke network steering only?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC4</itemNumber>
+      <feature>Can the product be stimulated to invoke finding &amp; binding only?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC5</itemNumber>
+      <feature>Can the product be stimulated to invoke touchlink commissioning followed by network steering?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC6</itemNumber>
+      <feature>Can the product be stimulated to invoke network formation followed by network steering?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC7</itemNumber>
+      <feature>Can the product be stimulated to invoke network steering followed by network formation?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC8</itemNumber>
+      <feature>Can the product be stimulated to reset before network formation?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>CC9</itemNumber>
+      <feature>Can the product be stimulated to automatically form a network upon startup when factory new?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+  </pixit>
+  <pixit label="Miscellaneous">
+    <pixitItem>
+      <itemNumber>M1</itemNumber>
+      <feature>Can the node disable network steering via local application trigger?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>M2</itemNumber>
+      <feature>Can the node store more than one NWK outgoing frame counters?</feature>
+      <status>O</status>
+      <specification>No</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>M3.1</itemNumber>
+      <feature>If supported, give the identifier of a cluster that has at least one writable attribute.</feature>
+      <status>O</status>
+      <specification>0x0020</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>M3.2</itemNumber>
+      <feature>Give the attribute identifier of a writable attribute.</feature>
+      <status cond="M3.1">M</status>
+      <specification>0x0000</specification>
+    </pixitItem>
+  </pixit>
+  <pics label="[ZLT] ZigBee logical device types">
+    <picsItem>
+      <itemNumber>ZLT1</itemNumber>
+      <feature>Is the logical device type specified as a ZigBee coordinator?</feature>
+      <reference>[R1]/2.5.4.5.1</reference>
+      <status>O.1</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT1.1</itemNumber>
+      <feature>Does the node encompass the role of the Trust Center?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT1">M</status>
+      <status cond="ZLT2">X</status>
+      <status cond="ZLT3">X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT1.2</itemNumber>
+      <feature>Does the node form a centralized security network?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT1">M</status>
+      <status cond="ZLT2">X</status>
+      <status cond="ZLT3">X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT1.3</itemNumber>
+      <feature>Does the node NOT attempt to join another network?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT2</itemNumber>
+      <feature>Is the logical device type specified as a ZigBee router?</feature>
+      <reference>[R1]/2.5.4.5.2</reference>
+      <status>O.1</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT2.1</itemNumber>
+      <feature>Can the router node join another network?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT2.2</itemNumber>
+      <feature>Does the node form a distributed network?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT1">X</status>
+      <status cond="ZLT2">O</status>
+      <status cond="ZLT3">X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT3</itemNumber>
+      <feature>Is the logical device type specified as a ZigBee end device?</feature>
+      <reference>[R1]/2.5.4.5.5</reference>
+      <status>O.1</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT3.1</itemNumber>
+      <feature>Can the end device node join another network?</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT3.2</itemNumber>
+      <feature>Is the end device sleepy?</feature>
+      <reference>-</reference>
+      <status cond="ZLT3">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ZLT4</itemNumber>
+      <feature>Can the node switch between ZLT1 and ZLT2 types under application control.</feature>
+      <reference>6.1</reference>
+      <status cond="ZLT1">O</status>
+      <status cond="ZLT2">O</status>
+      <support>false</support>
+    </picsItem>
+    <note ref="O.1">A node SHALL support one of ZLT1 or ZLT2 or ZLT3 or (ZLT1 and ZLT2, switchable under application control).</note>
+  </pics>
+  <pics label="[NSM] Network security models">
+    <picsItem>
+      <itemNumber>NSM1</itemNumber>
+      <feature>Can the node join a centralized security network?</feature>
+      <reference>6.2</reference>
+      <status cond="ZLT1">X</status>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSM2</itemNumber>
+      <feature>Can the node join a distributed security network?</feature>
+      <reference>6.2</reference>
+      <status cond="ZLT1">X</status>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[LK] Link keys">
+    <picsItem>
+      <itemNumber>LK1</itemNumber>
+      <feature>Does the node contain the default global Trust Center link key?</feature>
+      <reference>6.3</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>LK2</itemNumber>
+      <feature>Does the node contain the distributed security global link key?</feature>
+      <reference>6.3</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>LK3</itemNumber>
+      <feature>Does the node contain an install code derived preconfigured link key?</feature>
+      <reference>6.3</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>LK4</itemNumber>
+      <feature>Does the node contain the touchlink preconfigured link key?</feature>
+      <reference>6.3</reference>
+      <status cond="GRC5">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[UIC] Use of install codes">
+    <picsItem>
+      <itemNumber>UIC1</itemNumber>
+      <feature>Does the node support install codes?</feature>
+      <reference>6.4</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC2</itemNumber>
+      <feature>Will the node not be available via retail channels and be professionally installed?</feature>
+      <reference>6.4</reference>
+      <status>O.2</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC3</itemNumber>
+      <feature>Will the node be available via retail channels?</feature>
+      <reference>6.4</reference>
+      <status>O.2</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC4</itemNumber>
+      <feature>Is the node configured to only require the use of install codes on joining?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC2">O</status>
+      <status cond="UIC3">X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC5</itemNumber>
+      <feature>Does the node have a user configuration mechanism?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC3">O.3</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC6</itemNumber>
+      <feature>Does the node not have a user configuration mechanism?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC3">O.3</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC7</itemNumber>
+      <feature>Does the node default to requiring potential networks to use of install codes on joining?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC5">O</status>
+      <status cond="UIC6">X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC8</itemNumber>
+      <feature>Can the node be switched into a mode whereby all networks are considered for joining?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC5">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC9</itemNumber>
+      <feature>Can the node join all types of networks?</feature>
+      <reference>6.4</reference>
+      <status cond="UIC6">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>UIC10</itemNumber>
+      <feature>Does the Trust Center require the use of install codes for all joining nodes?</feature>
+      <reference>6.4</reference>
+      <status cond="ZLT1">O</status>
+      <support>false</support>
+    </picsItem>
+    <note ref="O.2">One of the items marked O.2 SHALL be supported.</note>
+    <note ref="O.3">One of the items marked O.3 SHALL be supported.</note>
+  </pics>
+  <pics label="[GRC] Commissioning">
+    <picsItem>
+      <itemNumber>GRC1</itemNumber>
+      <feature>Does the node support network steering?</feature>
+      <reference>6.5</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC2.1</itemNumber>
+      <feature>Is the device implemented as having a simple device class (see [R4])?</feature>
+      <reference>6.5</reference>
+      <status>O.4</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC2.2</itemNumber>
+      <feature>Is the device implemented as having a dynamic device class (see [R4])?</feature>
+      <reference>6.5</reference>
+      <status>O.4</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC2.3</itemNumber>
+      <feature>Is the device implemented as having a node device class (see [R4])?</feature>
+      <reference>6.5</reference>
+      <status>O.4</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC4</itemNumber>
+      <feature>Does the device support finding &amp; binding as either an initiator or a target?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC2.1">M</status>
+      <status cond="GRC2.2">O</status>
+      <status cond="GRC2.3">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC5</itemNumber>
+      <feature>Does the device support touchlink commissioning as either an initiator or a target or both?</feature>
+      <reference>6.5</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC5.1</itemNumber>
+      <feature>Does the device support touchlink commissioning as an initiator?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC5">O.5</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC5.2</itemNumber>
+      <feature>Does the device support touchlink commissioning as a target?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC5">O.5</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC6</itemNumber>
+      <feature>If touchlink commissioning as an initiator is attempted and is successful does the device not attempt any further commissioning operations?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC5.1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC7</itemNumber>
+      <feature>If network steering is attempted does the node follow the correct steering procedure dependent on whether the node is joined to a network or not?</feature>
+      <reference>6.5</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC8</itemNumber>
+      <feature>Does the node only form a network if the node is not yet joined to a network?</feature>
+      <reference>6.5</reference>
+      <status cond="ZLT1.2">M</status>
+      <status cond="ZLT2.2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC9</itemNumber>
+      <feature>Can the node form a centralized network?</feature>
+      <reference>6.5</reference>
+      <status cond="ZLT1.2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC10</itemNumber>
+      <feature>Can the node form a distributed network?</feature>
+      <reference>6.5</reference>
+      <status cond="ZLT2.2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC11</itemNumber>
+      <feature>Does the node skip network formation?</feature>
+      <reference>6.5</reference>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC12</itemNumber>
+      <feature>Does the node attempt finding &amp; binding only if it is joined to a network?</feature>
+      <reference>6.5</reference>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC13</itemNumber>
+      <feature>Does the node instigate finding &amp; binding on one or more endpoints implemented on the node?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC4">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC14</itemNumber>
+      <feature>Does the node attempt finding &amp; binding as an initiator endpoint if the endpoint supports a type 1 client or type 2 server cluster?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC4">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC15</itemNumber>
+      <feature>Does the node attempt finding &amp; binding as a target endpoint if the endpoint supports a type 1 server or type 2 client cluster?</feature>
+      <reference>6.5</reference>
+      <status cond="GRC4">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC16</itemNumber>
+      <feature>Is the node capable of binding to a group during finding &amp; binding?</feature>
+      <reference>-</reference>
+      <status cond="GRC4">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>GRC17</itemNumber>
+      <feature>Is the device able to transmit groupcast messages?</feature>
+      <reference>-</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <note ref="O.4">One of the items marked O.4 SHALL be supported.</note>
+    <note ref="O.5">One of the items marked O.5 SHALL be supported.</note>
+  </pics>
+  <pics label="[MRD] Minimum requirements for all devices">
+    <picsItem>
+      <itemNumber>MRD1</itemNumber>
+      <feature>Can the node process the ZDO Active_EP_req command and respond with the ZDO Active_EP_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD1.1</itemNumber>
+      <feature>Can the node process the ZDO Node_Desc_req command and respond with the ZDO Node_Desc_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD2</itemNumber>
+      <feature>Can the node process the ZDO Simple_Desc_req command and respond with the ZDO Simple_Desc_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD3</itemNumber>
+      <feature>Can the node process the ZDO IEEE_Addr_req command and respond with the ZDO IEEE_Addr_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD4</itemNumber>
+      <feature>Can the node process the ZDO NWK_Addr_req command and respond with the ZDO NWK_Addr_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD5</itemNumber>
+      <feature>Can the node process the ZDO Match_Desc_req command and respond with the ZDO Match_Desc_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD6</itemNumber>
+      <feature>Can the node process the ZDO Mgmt_Bind_req command and respond with the ZDO Mgmt_Bind_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD7</itemNumber>
+      <feature>Can the node process the ZDO Mgmt_Lqi_req command and respond with the ZDO Mgmt_Lqi_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD8</itemNumber>
+      <feature>Can the node process the ZDO Bind_req command and respond with the ZDO Bind_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD9</itemNumber>
+      <feature>Can the node process the ZDO Unbind_req command and respond with the ZDO Unbind_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD10</itemNumber>
+      <feature>Can the node process the ZDO Mgmt_Leave_req command and respond with the ZDO Mgmt_Leave_rsp command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD11</itemNumber>
+      <feature>Can the node process at least one identify cluster, identify query response command after broadcasting an identify cluster, identify query command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD12</itemNumber>
+      <feature>Can the node process more than one identify cluster, identify query response command after broadcasting an identify cluster, identify query command?</feature>
+      <reference>6.6</reference>
+      <status>O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD13</itemNumber>
+      <feature>Does the node implement a binding table whose number of entries is ≥ the sum of cluster instances supported on each device?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD14</itemNumber>
+      <feature>Regardless of the commissioning mechanism, is the binding table consistent such that its contents can be retrieved using the ZDO Mgmt_Bind_req command?</feature>
+      <reference>6.6</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD15</itemNumber>
+      <feature>Does the node have a default reporting configuration for every implemented attribute that is specified as mandatory and reportable?</feature>
+      <reference>6.6</reference>
+      <status cond="DRC1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD16</itemNumber>
+      <feature>Does the node have a cluster which is the target of an operational transaction?</feature>
+      <reference>6.6</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MRD17</itemNumber>
+      <feature>Does the node support group addressing and at least 8 memberships in the group table?</feature>
+      <reference>6.6</reference>
+      <status cond="MRD16">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[DRC] Default reporting configuration">
+    <picsItem>
+      <itemNumber>DRC1</itemNumber>
+      <feature>Does the node have at least one attribute that is specified as reportable?</feature>
+      <reference>6.7</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>DRC2</itemNumber>
+      <feature>Does the node have a default reporting configuration for every attribute that is specified as reportable?</feature>
+      <reference>6.7</reference>
+      <status cond="DRC1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>DRC3</itemNumber>
+      <feature>Does the node automatically send reports to a node that binds with a cluster containing an attribute that is specified as reportable?</feature>
+      <reference>6.7</reference>
+      <status cond="DRC2">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>DRC4</itemNumber>
+      <feature>If any default reporting configuration is overwritten, is the updated reporting configuration used instead?</feature>
+      <reference>6.7</reference>
+      <status cond="DRC1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>DRC5</itemNumber>
+      <feature>If the maximum reporting interval of an attribute is greater than 0x0000, is a report generated when the time that has elapse since the previous report of the same attribute is equal to the maximum reporting interval for that attribute?</feature>
+      <reference>6.7</reference>
+      <status cond="DRC1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>DRC6</itemNumber>
+      <feature>If the maximum reporting interval of an attribute is equal to 0x0000, is a report generated when the attribute value changes?</feature>
+      <reference>6.7</reference>
+      <status cond="DRC1">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[MDP] MAC data polling">
+    <picsItem>
+      <itemNumber>MDP1</itemNumber>
+      <feature>Is the MAC data polling rate dynamic based on the operating state of the node?</feature>
+      <reference>6.8</reference>
+      <status cond="ZLT3">R</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP2</itemNumber>
+      <feature>Does the node have at least a fast and a slow MAC data polling rate?</feature>
+      <reference>6.8</reference>
+      <status cond="ZLT3">R</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP3</itemNumber>
+      <feature>Does the device poll more frequently than once per 7.5 seconds?</feature>
+      <reference>6.8</reference>
+      <status cond="ZLT3">R</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP4</itemNumber>
+      <feature>While waiting for an active response message, does the node poll at its fast rate?</feature>
+      <reference>6.8</reference>
+      <status cond="MDP2">R</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP5</itemNumber>
+      <feature>Is the fast poll rate at least once every 3 seconds?</feature>
+      <reference>6.8</reference>
+      <status cond="MDP2">R</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP6</itemNumber>
+      <feature>While not actively waiting for messages, does the node poll at its slow rate?</feature>
+      <reference>6.8</reference>
+      <status cond="MDP2">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>MDP7</itemNumber>
+      <feature>Does the node poll at its fast rate during commissioning?</feature>
+      <reference>6.8</reference>
+      <status cond="MDP2">R</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[ZPD] ZigBee persistent data">
+    <picsItem>
+      <itemNumber>ZPD1</itemNumber>
+      <feature>Does the node preserve the value of the bdbNodeIsOnANetwork attribute across resets?</feature>
+      <reference>6.9</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[INP] Initialization procedure">
+    <picsItem>
+      <itemNumber>INP1</itemNumber>
+      <feature>Does the node support the initialization procedure?</feature>
+      <reference>7.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>INP2</itemNumber>
+      <feature>Does the node restore its persistent ZigBee data?</feature>
+      <reference>7.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>INP3</itemNumber>
+      <feature>If the node is a ZigBee End Device and was previously on a network, does it attempt to rejoin the network?</feature>
+      <reference>7.1</reference>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>INP4</itemNumber>
+      <feature>On successful rejoining, does the node broadcast a device_annce ZDO command?</feature>
+      <reference>7.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>INP5</itemNumber>
+      <feature>If the node is a ZigBee Router and supports touchlink but was not previously on a network, does it switch to a touchlink primary channel?</feature>
+      <reference>7.1</reference>
+      <status cond="(ZLT2 AND GRC5)">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[COM] Commissioning">
+    <picsItem>
+      <itemNumber>COM1</itemNumber>
+      <feature>Does the implementation provide a mechanism to invoke network steering?</feature>
+      <reference>8</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>COM2</itemNumber>
+      <feature>Does the implementation provide a mechanism to invoke finding &amp; binding?</feature>
+      <reference>8</reference>
+      <status cond="GRC4">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[TLC] Top level commissioning procedure">
+    <picsItem>
+      <itemNumber>TLC1</itemNumber>
+      <feature>If touchlink commissioning is requested, does the node follow the touchlink for initiator procedure?</feature>
+      <reference>8.1</reference>
+      <status cond="GRC5.1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC2</itemNumber>
+      <feature>If network steering is requested when bdbNodeIsOnANetwork is equal to TRUE, does the node follow the network steering for a node on a network procedure?</feature>
+      <reference>8.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC3</itemNumber>
+      <feature>If network steering is requested when bdbNodeIsOnANetwork is equal to FALSE, does the node follow the network steering for a node not on a network procedure?</feature>
+      <reference>8.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC4</itemNumber>
+      <feature>If network formation is requested when bdbNodeIsOnANetwork is equal to FALSE, does the node follow the network formation procedure?</feature>
+      <reference>8.1</reference>
+      <status cond="ZLT1">M</status>
+      <status cond="ZLT2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC5</itemNumber>
+      <feature>If network formation is requested when bdbNodeIsOnANetwork is equal to TRUE, does the node follow the network formation procedure?</feature>
+      <reference>8.1</reference>
+      <status>X</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC6</itemNumber>
+      <feature>If finding &amp; binding is requested when bdbNodeIsOnANetwork is equal to TRUE, does the node follow the finding &amp; binding procedure according to cluster class?</feature>
+      <reference>8.1</reference>
+      <status cond="GRC4">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLC7</itemNumber>
+      <feature>If finding &amp; binding is requested when bdbNodeIsOnANetwork is equal to FALSE, does the node follow the finding &amp; binding procedure according to cluster class?</feature>
+      <reference>8.1</reference>
+      <status>X</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[NSO] Network steering procedure for a node on a network">
+    <picsItem>
+      <itemNumber>NSO1</itemNumber>
+      <feature>Is the network steering for a node on a network procedure supported?</feature>
+      <reference>8.2</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSO2</itemNumber>
+      <feature>Does the node first broadcast the Mgmt_Permit_Joining_req ZDO command?</feature>
+      <reference>8.2</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSO3</itemNumber>
+      <feature>If the node is a ZigBee Coordinator or a ZigBee Router, does the node activate its permit joining flag for ≥ bdbcMinCommissioningTime?</feature>
+      <reference>8.2</reference>
+      <status cond="ZLT1">M</status>
+      <status cond="ZLT2">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[NSN] Network steering procedure for a node not on a network">
+    <picsItem>
+      <itemNumber>NSN1</itemNumber>
+      <feature>Is the network steering for a node not on a network procedure supported?</feature>
+      <reference>8.3</reference>
+      <status cond="ZLT1">X</status>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN2</itemNumber>
+      <feature>Does the node attempt to discover networks over a set of channels?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN3</itemNumber>
+      <feature>If suitable networks were found, does the node attempt to join one of them using MAC association?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN4</itemNumber>
+      <feature>If the join was not successful and there are more suitable networks to join, does the node attempt to join another network?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN5</itemNumber>
+      <feature>If the join was successful, does the node wait apsSecurityTimeOutPeriod milliseconds to receive the network key?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN6</itemNumber>
+      <feature>If the network key is not received within apsSecurityTimeOutPeriod milliseconds, the network key is received but could not be decrypted or the authentication fails does the node reset its network parameters?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN7</itemNumber>
+      <feature>Does the node broadcast a Device_annce ZDO command?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN9</itemNumber>
+      <feature>If the TC link key exchange is not successful, does the node reset its network parameters and remove itself from the network?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN10</itemNumber>
+      <feature>If the TC link key exchange is successful, does the node broadcast the Mgmt_Permit_Joining_req ZDO command?</feature>
+      <reference>8.3</reference>
+      <status cond="NSN1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NSN11</itemNumber>
+      <feature>Does the node activate its permit joining flag if new nodes can join this node?</feature>
+      <reference>8.3</reference>
+      <status cond="(ZLT1 || ZLT2)">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[NFP] Network formation procedure">
+    <picsItem>
+      <itemNumber>NFP1</itemNumber>
+      <feature>Is the network formation procedure supported?</feature>
+      <reference>8.4</reference>
+      <status cond="ZLT1">M</status>
+      <status cond="ZLT2">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NFP2</itemNumber>
+      <feature>Does the node attempt to form a network over a set of channels?</feature>
+      <reference>8.4</reference>
+      <status cond="NFP1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>NFP3</itemNumber>
+      <feature>If formation is successful and the node is a ZigBee Coordinator, does it initiate its Trust Center functionality?</feature>
+      <reference>8.4</reference>
+      <status cond="(NFP1 AND ZLT1)">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[FBT] Finding &amp; binding procedure for a target endpoint">
+    <picsItem>
+      <itemNumber>FBT1</itemNumber>
+      <feature>Is the finding &amp; binding for a target endpoint procedure supported?</feature>
+      <reference>8.5</reference>
+      <status cond="GRC15">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBT2</itemNumber>
+      <feature>Does the target identify itself for at least bdbMinCommissioningTime seconds?</feature>
+      <reference>8.5</reference>
+      <status cond="FBT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBT3</itemNumber>
+      <feature>Does the target respond to Identify cluster Identify Query commands?</feature>
+      <reference>8.5</reference>
+      <status cond="FBT1">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[FBI] Finding &amp; binding procedure for an initiator endpoint">
+    <picsItem>
+      <itemNumber>FBI1</itemNumber>
+      <feature>Is the finding &amp; binding for an initiator endpoint procedure supported?</feature>
+      <reference>8.6</reference>
+      <status cond="GRC14">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBI2</itemNumber>
+      <feature>Is the Identify cluster Identify Query command broadcast supported?</feature>
+      <reference>8.6</reference>
+      <status cond="FBI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBI3</itemNumber>
+      <feature>Is the simple descriptor of each respondent obtained with the Simple_Desc_req ZDO command?</feature>
+      <reference>8.6</reference>
+      <status cond="FBI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBI4</itemNumber>
+      <feature>Does the initiator create a binding table entry for each matching cluster to the respondent?</feature>
+      <reference>8.6</reference>
+      <status cond="FBI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>FBI5</itemNumber>
+      <feature>If a group binding is requested, does the initiator add the respondent to an appropriate group?</feature>
+      <reference>8.6</reference>
+      <status cond="(FBI1 AND GRC16)">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[TLI] Touchlink procedure for an initiator">
+    <picsItem>
+      <itemNumber>TLI1</itemNumber>
+      <feature>Is the touchlink for an initiator procedure supported?</feature>
+      <reference>8.7</reference>
+      <status cond="GRC5.1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI2</itemNumber>
+      <feature>Does the initiator broadcast 5 scan request inter-PAN command frames on the first primary touchlink channel and then once for each remaining primary channel?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI3</itemNumber>
+      <feature>Does the initiator broadcast a scan request inter-PAN command frames on each secondary touchlink channel when using touchlink for formation or joining?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI4</itemNumber>
+      <feature>If the initiator is not on a network, does it ignore any scan request command frames from other factory new initiators?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI5</itemNumber>
+      <feature>If the initiator is not on a network, does it switch into a target mode if any scan request command frames are received from other non-factory new initiators?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI6</itemNumber>
+      <feature>If a target is found, does the initiator transmit a device information request inter-PAN command frame to the selected target?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI7</itemNumber>
+      <feature>If a target is found, does the initiator transmit one or more identify request inter-PAN command frame to the selected target?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI8</itemNumber>
+      <feature>If a scan request command frame is received from a target on the same network as the initiator with the network update identifier field lower than nwkUpdateId, does the initiator transmit a network update request inter-PAN command frame to the selected target and then terminate the touchlink procedure?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI9</itemNumber>
+      <feature>If a target is found on a different network to the initiator and the initiator is on a centralized network, does it terminate the touchlink procedure?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI10</itemNumber>
+      <feature>If the initiator is not on a network and the target is a ZigBee Router, does the initiator transmit a network start request inter-PAN command frame to the selected target?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI11</itemNumber>
+      <feature>If the initiator is on a network and the target is a ZigBee Router, does the initiator transmit a network join router request inter-PAN command frame to the selected target?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI12</itemNumber>
+      <feature>If the initiator is on a network and the target is a ZigBee End Device, does the node transmit a network join end device request inter-PAN command frame to the selected target?</feature>
+      <reference>8.7</reference>
+      <status cond="TLI1">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLI13</itemNumber>
+      <feature>If the initiator is an end device and a network start request inter-PAN command frame was sent to the selected target, does the node rejoin the network?</feature>
+      <reference>8.7</reference>
+      <status cond="(ZLT3 AND TLI1)">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[TLT] Touchlink procedure for an target">
+    <picsItem>
+      <itemNumber>TLT1</itemNumber>
+      <feature>Is the touchlink for a target procedure supported?</feature>
+      <reference>8.8</reference>
+      <status cond="GRC5.2">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT2</itemNumber>
+      <feature>Does the target discard any touchlink commissioning command other than a scan request command and terminate the procedure?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT3</itemNumber>
+      <feature>Does the target discard scan request command frames with an RSSI lower than a product specific threshold and terminate the procedure?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT4</itemNumber>
+      <feature>Does the target respond to a scan request command frame with a scan response command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT5</itemNumber>
+      <feature>Does the target respond to a device information request command frame with a device information response command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT6</itemNumber>
+      <feature>Does the target identify itself on receipt of a identify request command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT7</itemNumber>
+      <feature>If the target receives a network start request command frame, is a ZigBee Router and decides to start a network, does it perform a network discovery?</feature>
+      <reference>8.8</reference>
+      <status cond="(TLT1 AND ZLT2)">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT8</itemNumber>
+      <feature>If the target receives a network join router request command frame, is a ZigBee Router and decides to join the network of the initiator, does it respond with a network join router response command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="(TLT1 AND ZLT2)">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT9</itemNumber>
+      <feature>If the target receives a network join end device request command frame, is a ZigBee End Device and decides to join the network of the initiator, does it respond with a network join end device response command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="(TLT1 AND ZLT3)">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT10</itemNumber>
+      <feature>If target is already part of a network, does it leave its current network?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT11</itemNumber>
+      <feature>If requested by the initiator, does the target start a new network and respond with a network start response command frame?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TLT12</itemNumber>
+      <feature>After starting a new network, does the target direct join the initiator to its new network?</feature>
+      <reference>8.8</reference>
+      <status cond="TLT1">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[RBC] Reset via the basic cluster">
+    <picsItem>
+      <itemNumber>RBC2</itemNumber>
+      <feature>Does the initiator transmit a reset to factory defaults command frame to a target?</feature>
+      <reference>9.1</reference>
+      <status>O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RBC3</itemNumber>
+      <feature>On receipt of a reset to factory defaults command frame, does the target reset all attributes of all clusters to their default values?</feature>
+      <reference>9.1</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RBC4</itemNumber>
+      <feature>On receipt of a reset to factory defaults command frame, does the target not reset its network parameters?</feature>
+      <reference>9.1</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[RTL] Reset via the touchlink commissioning cluster">
+    <picsItem>
+      <itemNumber>RTL2</itemNumber>
+      <feature>Does the initiator transmit a reset to factory new command frame to a target?</feature>
+      <reference>9.2</reference>
+      <status cond="GRC5">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RTL3</itemNumber>
+      <feature>On receipt of a reset to factory new command frame and if the target is on a distributed security network, does it leave the network?</feature>
+      <reference>9.2</reference>
+      <status cond="GRC5">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RTL4</itemNumber>
+      <feature>On receipt of a reset to factory new command frame and if the target is on a centralized security network, does it ignore the command?</feature>
+      <reference>9.2</reference>
+      <status cond="GRC5">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RTL5</itemNumber>
+      <feature>Does the initiator use an extended channel scan during a reset via the touchlink commissioning cluster?</feature>
+      <reference>9.2</reference>
+      <status cond="GRC5">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[RNL] Reset via network leave command">
+    <picsItem>
+      <itemNumber>RNL1</itemNumber>
+      <feature>Does a node transmit a leave NWK command frame to another node to trigger the other node to leave?</feature>
+      <reference>9.4</reference>
+      <status>O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RNL2</itemNumber>
+      <feature>On receipt of a leave NWK command frame with the request bit set to 1, does the node leave the network?</feature>
+      <reference>9.4</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[RLZ] Reset via the Mgmt_Leave_req ZDO command">
+    <picsItem>
+      <itemNumber>RLZ1</itemNumber>
+      <feature>Does a node transmit an Mgmt_Leave_req ZDO command frame to another node?</feature>
+      <reference>9.5</reference>
+      <status>O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLZ2</itemNumber>
+      <feature>On receipt of an Mgmt_Leave_req ZDO command frame, does the node leave the network?</feature>
+      <reference>9.5</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[RLA] Reset via local action">
+    <picsItem>
+      <itemNumber>RLA1</itemNumber>
+      <feature>Does the node provide a local reset mechanism?</feature>
+      <reference>9.6</reference>
+      <status>O</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLA2</itemNumber>
+      <feature>On activation of the local reset mechanism, does the node reset itself?</feature>
+      <reference>9.6</reference>
+      <status cond="RLA1">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[RLK] Receiving a new Trust Center link key">
+    <picsItem>
+      <itemNumber>RLK0</itemNumber>
+      <feature>Does the node exchange its link key during network steering on a centralized security network?</feature>
+      <reference>10.2.5</reference>
+      <status cond="ZLT2">M</status>
+      <status cond="ZLT3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK1a</itemNumber>
+      <feature>Does the node execute the appropriate steps defined by the alternative link key exchange mechanism?</feature>
+      <reference>10.2.5, step 1</reference>
+      <status cond="(RLK0 AND (IA7!=0x00))">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK1b</itemNumber>
+      <feature>If the alternative mechanism is successful, does the node terminate the node link key exchange procedure?</feature>
+      <reference>10.2.5, step 1</reference>
+      <status cond="RLK1a">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK3</itemNumber>
+      <feature>If the APS Request Key method is used or the alternative mechanism is not successful, does the node transmit the Node_Desc_req ZDO command to the Trust Center?</feature>
+      <reference>10.2.5, step 3</reference>
+      <status cond="(RLK0 AND (IA7==0x00))">M</status>
+      <status cond="RLK1a">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK4a</itemNumber>
+      <feature>If a Node_Desc_rsp ZDO command is not received within bdbcTCLinkKey-ExchangeTimeout seconds does the node retry up to the maximum attempts permitted?</feature>
+      <reference>10.2.5, step 4</reference>
+      <status cond="RLK3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK4b</itemNumber>
+      <feature>If a Node_Desc_rsp ZDO command is not received after the maximum number of attempts permitted, does it terminate the node link key exchange procedure?</feature>
+      <reference>10.2.5, step 4</reference>
+      <status cond="RLK3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK5</itemNumber>
+      <feature>If a Node_Desc_rsp ZDO command is received and the server mask of the node descriptor indicates a core stack of r20 or earlier, does the node terminate the node link key exchange procedure?</feature>
+      <reference>10.2.5, step 5</reference>
+      <status cond="RLK3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK7</itemNumber>
+      <feature>If a Node_Desc_rsp ZDO command is received and the server mask of the node descriptor indicates a core stack of r21 or later, does the node request a new link key using the Request Key APS command frame to the Trust Center, encrypted with its initial link key?</feature>
+      <reference>10.2.5, step 7</reference>
+      <status cond="RLK3">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK8a</itemNumber>
+      <feature>If a Transport Key APS command is not received within bdbcTCLinkKey-ExchangeTimeout seconds does the node retry up to the maximum attempts permitted?</feature>
+      <reference>10.2.5, step 8</reference>
+      <status cond="RLK7">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK8b</itemNumber>
+      <feature>If a Transport Key APS command is not received after the maximum number of attempts permitted, does it terminate the node link key exchange procedure?</feature>
+      <reference>10.2.5, step 8</reference>
+      <status cond="RLK7">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK9</itemNumber>
+      <feature>If a Transport Key APS command frame is received from the Trust Center, containing a new link key, does the node update its Trust Center link key with the new key?</feature>
+      <reference>10.2.5, step 9</reference>
+      <status cond="RLK7">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK11</itemNumber>
+      <feature>Does the node verify the new key using the Verify Key APS command frame to the Trust Center?</feature>
+      <reference>10.2.5, step 11</reference>
+      <status cond="RLK7">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK12a</itemNumber>
+      <feature>If a Confirm Key APS command is not received within bdbcTCLinkKey-ExchangeTimeout seconds does the node retry up to the maximum attempts permitted?</feature>
+      <reference>10.2.5, step 12</reference>
+      <status cond="RLK11">M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>RLK12b</itemNumber>
+      <feature>If a Confirm Key APS command is not received after the maximum number of attempts permitted, does it terminate the node link key exchange procedure?</feature>
+      <reference>10.2.5, step 12</reference>
+      <status cond="RLK11">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[AIC] Adding an install code">
+    <picsItem>
+      <itemNumber>AIC0</itemNumber>
+      <feature>Does the Trust Center allow the input of an install code?</feature>
+      <reference>10.3.1</reference>
+      <status cond="ZLT1">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>AIC2</itemNumber>
+      <feature>On receipt of an installation code, does the Trust Center create an entry in its node/link key mapping table (apsDeviceKeyPairSet) with the installation code derived key?</feature>
+      <reference>10.3.1, step 2</reference>
+      <status cond="(AIC0 AND (IA2==true))">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[ANN] Adding a new node into the network">
+    <picsItem>
+      <itemNumber>ANN1</itemNumber>
+      <feature>On receipt of an Update Device APS command frame, does the Trust Center follow the procedure for adding a new node into the network?</feature>
+      <reference>10.3.2</reference>
+      <status cond="ZLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN2</itemNumber>
+      <feature>If an install code is required and the new node is not in apsDeviceKeyPairSet, does the Trust Center terminate the Trust Center link key exchange procedure?</feature>
+      <reference>10.3.2</reference>
+      <status cond="(ANN1 AND ( IA2 == true ))">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN3</itemNumber>
+      <feature>If an install code is not required and the new node is not in apsDeviceKey-PairSet, does the Trust Center create an entry in its apsDeviceKeyPairSet for the joining node?</feature>
+      <reference>10.3.2</reference>
+      <status cond="(ANN1 AND ( IA2 == false ))">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN4</itemNumber>
+      <feature>Does the Trust Center send the network key to the joining node using a Transport Key APS command frame, encrypted with the entry in apsDeviceKeyPairSet corresponding to the joining node?</feature>
+      <reference>10.3.2</reference>
+      <status cond="ANN1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN5</itemNumber>
+      <feature>If a Request Key APS command frame is not received and the Trust Center requires the new node to exchange its link key, does it request the new node leaves the network?</feature>
+      <reference>10.3.2</reference>
+      <status cond="(IA9==TRUE)">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN6</itemNumber>
+      <feature>On receipt of a Request Key APS command frame from the joining node, encrypted with its initial link key, does the Trust Center generate a new link key and transport it to the joining node using a Transport Key APS command frame?</feature>
+      <reference>10.3.2</reference>
+      <status cond="ANN5">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN7</itemNumber>
+      <feature>If a Verify Key APS command frame is not received by the Trust Center from the joining node, does it request the new node leaves the network?</feature>
+      <reference>10.3.2</reference>
+      <status cond="ANN6">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>ANN8</itemNumber>
+      <feature>Does the Trust Center receive a Verify Key APS command frame from the joining node, update the entry in apsDeviceKeyPairSet corresponding to the joining node with the new key and respond with a Confirm Key APS command frame?</feature>
+      <reference>10.3.2</reference>
+      <status cond="ANN7">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="[BKN] Behavior when a known node joins">
+    <picsItem>
+      <itemNumber>BKN1</itemNumber>
+      <feature>Does the Trust Center allow a known node to join but in a fresh state?</feature>
+      <reference>10.3.3</reference>
+      <status cond="ZLT1">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>BKN2</itemNumber>
+      <feature>Does the Trust Center store the original install code derived link key for devices that have joined?</feature>
+      <reference>10.3.3</reference>
+      <status cond="ZLT1">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>BKN3</itemNumber>
+      <feature>Does the Trust Center overwrite the link key for a joining node with the original install code derived link key?</feature>
+      <reference>10.3.3</reference>
+      <status cond="( (IA2==true) AND BKN2))">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>BKN4</itemNumber>
+      <feature>Does the Trust Center overwrite the link key for a joining node with the default global Trust Center link key?</feature>
+      <reference>10.3.3</reference>
+      <status cond="(IA2==FALSE)">M</status>
+      <support>true</support>
+    </picsItem>
+  </pics>
+  <pics label="[TCP] Trust center policies">
+    <picsItem>
+      <itemNumber>TCP1.1</itemNumber>
+      <feature>Does the Trust Center allow any nodes to join (Trust Center policy useWhiteList)?</feature>
+      <reference>[ZIGBEE] Table 4.33</reference>
+      <status cond="ZLT1.1">O.7</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TCP1.2</itemNumber>
+      <feature>Does the Trust Center allow only known nodes to join (Trust Center policy useWhiteList)?</feature>
+      <reference>[ZIGBEE] Table 4.33</reference>
+      <status cond="ZLT1.1">O.7</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TCP2.1</itemNumber>
+      <feature>Does the Trust Center allow a node on the network that transmits a ZDO Mgmt_Permit_Join with a significance set to 1 to affect the Trust Center policy (Trust Center policy allowRemoteTc-PolicyChange)?</feature>
+      <reference>[ZIGBEE] Table 4.33</reference>
+      <status cond="ZLT1.1">O.8</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>TCP2.2</itemNumber>
+      <feature>Does the Trust Center forbid a node on the network that transmits a ZDO Mgmt_Permit_Join with a significance set to 1 to affect the Trust Center policy (Trust Center policy allowRemoteTc-PolicyChange)?</feature>
+      <reference>[ZIGBEE] Table 4.33</reference>
+      <status cond="ZLT1.1">O.8</status>
+      <support>false</support>
+    </picsItem>
+    <note ref="O.7">One or both of the items marked O.7 SHALL be supported.</note>
+    <note ref="O.8">One or both of the items marked O.8 SHALL be supported.</note>
+  </pics>
+</generalPICS>

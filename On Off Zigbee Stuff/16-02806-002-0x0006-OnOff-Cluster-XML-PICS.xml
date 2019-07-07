@@ -1,0 +1,304 @@
+<!--
+
+On/Off cluster (0x0006) XML PICS
+ZigBee Document 16-02806-002
+May 4th, 2017
+
+Copyright (c) ZigBee Alliance, Inc. (1996-2017).  All rights reserved.
+508 Second Street, Suite 206 Davis, CA 95616 - USA
+http://www.zigbee.org
+
+Permission is granted to members of the ZigBee Alliance to reproduce this document
+for their own use or the use of other ZigBee Alliance members only, provided this
+notice is included.  All other rights reserved.  Duplication for sale, or for
+commercial or for-profit use is strictly prohibited without the prior written consent
+of the ZigBee Alliance.
+
+Accepted by
+===========
+This document has not been accepted for release by the ZigBee Alliance Board of
+Directors
+
+Abstract
+========
+This document contains the XML PICS for the On/Off cluster according to the generic
+XML PICS schema: 16-03902-003-Generic-PICS-XML-Schema.xsd
+
+Notice of use and disclosure
+============================
+Copyright © ZigBee Alliance, Inc. (1996-2017). All rights Reserved. This information
+within this document is the property of the ZigBee Alliance and its use and
+disclosure are restricted.
+
+Elements of ZigBee Alliance specifications may be subject to third party intellectual
+property rights, including without limitation, patent, copyright or trademark rights
+(such a third party may or may not be a member of ZigBee). ZigBee is not responsible
+and shall not be held responsible in any manner for identifying or failing to identify
+any or all such third party intellectual property rights.
+
+No right to use any ZigBee name, logo or trademark is conferred herein.  Use of any
+ZigBee name, logo or trademark requires membership in the ZigBee Alliance and
+compliance with the ZigBee Logo and Trademark Policy and related ZigBee policies.
+
+This document and the information contained herein are provided on an “AS IS” basis
+and ZigBee DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+(A) ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS
+OF THIRD PARTIES (INCLUDING WITHOUT LIMITATION ANY INTELLECTUAL PROPERTY RIGHTS
+INCLUDING PATENT, COPYRIGHT OR TRADEMARK RIGHTS) OR (B) ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NONINFRINGEMENT. IN NO
+EVENT WILL ZIGBEE BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OF
+DATA, INTERRUPTION OF BUSINESS, OR FOR ANY OTHER DIRECT, INDIRECT, SPECIAL OR
+EXEMPLARY, INCIDENTIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF ANY KIND, IN CONTRACT OR
+IN TORT, IN CONNECTION WITH THIS DOCUMENT OR THE INFORMATION CONTAINED HEREIN, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. All Company, brand and product
+names may be trademarks that are the sole property of their respective owners.  
+
+The above notice and this paragraph must be included on all copies of this document
+that are made.
+
+PICS Completion Notes
+=====================
+In each <support></support> item use:
+  "true"  if the feature is supported, OR
+  "false" if the feature is NOT supported
+By default all items are not supported (false)
+   
+--><clusterPICS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://./16-03902-003-Generic-PICS-XML-Schema.xsd">
+  <!-- General cluster information -->
+	<name>OnOff</name>
+	<clusterId>0x0006</clusterId>
+	<picsRoot>OO</picsRoot>
+  <!-- PIXIT -->
+  <pixit>
+    <pixitItem>
+      <itemNumber>OO.PIXIT.MINRI</itemNumber>
+      <feature>What is the minimum reporting interval for reporting attributes?</feature>
+      <specification>1</specification>
+    </pixitItem>
+    <pixitItem>
+      <itemNumber>OO.PIXIT.MAXRI</itemNumber>
+      <feature>What is the maximum reporting interval for reporting attributes?</feature>
+      <specification>65534</specification>
+    </pixitItem>
+  </pixit>
+  <!-- Cluster usage -->
+	<usage>
+		<picsItem>
+			<itemNumber>OO.S</itemNumber>
+			<feature>Does the device implement the on/off cluster as a server?</feature>
+			<reference>3.8.2</reference>
+			<status>O</status>
+			<support>false</support>
+		</picsItem>
+		<picsItem>
+			<itemNumber>OO.C</itemNumber>
+			<feature>Does the device implement the on/off cluster as a client?</feature>
+			<reference>3.8.3</reference>
+			<status>O</status>
+			<support>true</support>
+		</picsItem>
+	</usage>
+  <!-- Server side -->
+	<clusterSide type="server">
+		<attributes>
+			<picsItem>
+				<itemNumber>OO.S.A0000</itemNumber>
+				<feature>Does the device implement the OnOff attribute?</feature>
+				<reference>Table 3.42</reference>
+				<reference>3.8.2.2.1</reference>
+				<status cond="OO.S">M</status>
+				<support>false</support>
+			</picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A0000.Scene</itemNumber>
+        <feature>Does the device implement receiving and responding to the scene cluster commands for the OnOff attribute?</feature>
+        <reference>3.8.2.6</reference>
+        <status cond="(OO.S.A0000 AND S.S)">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A0000.Report.Tx</itemNumber>
+        <feature>Does the device implement receiving and responding to the global report attribute commands for the OnOff attribute and sending reports?</feature>
+        <reference>3.8.2.7</reference>
+        <status cond="OO.S.A0000">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A4000</itemNumber>
+        <feature>Does the device implement the GlobalSceneControl attribute?</feature>
+        <reference>Table 3.42</reference>
+        <reference>3.8.2.2.2</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A4001</itemNumber>
+        <feature>Does the device implement the OnTime attribute?</feature>
+        <reference>Table 3.42</reference>
+        <reference>3.8.2.2.3</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A4002</itemNumber>
+        <feature>Does the device implement the OffWaitTime attribute?</feature>
+        <reference>Table 3.24</reference>
+        <reference>3.8.2.2.4</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.A4003</itemNumber>
+        <feature>Does the device implement the StartUpOnOff attribute?</feature>
+        <reference>[ZLO] Table 70</reference>
+        <reference>27.3.1.1.1</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="OO.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+		<commandsReceived>
+			<picsItem>
+				<itemNumber>OO.S.C00.Rsp</itemNumber>
+				<feature>Does the device implement receiving the Off command?</feature>
+				<reference>Table 3.43</reference>
+				<reference>3.8.2.3.1</reference>
+				<status cond="OO.S">M</status>
+				<support>false</support>
+			</picsItem>
+      <picsItem>
+        <itemNumber>OO.S.C01.Rsp</itemNumber>
+        <feature>Does the device implement receiving the On command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.2</reference>
+        <status cond="OO.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.C02.Rsp</itemNumber>
+        <feature>Does the device implement receiving the Toggle command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.3</reference>
+        <status cond="OO.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.C40.Rsp</itemNumber>
+        <feature>Does the device implement receiving the Off With Effect command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.4</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.C41.Rsp</itemNumber>
+        <feature>Does the device implement receiving the On With Recall Glocal Scene command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.5</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.S.C42.Rsp</itemNumber>
+        <feature>Does the device implement receiving the On With Timed Off command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.6</reference>
+        <status cond="OO.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </commandsReceived>
+	</clusterSide>
+  <!-- Client side -->
+	<clusterSide type="client">
+    <attributes>
+      <picsItem>
+        <itemNumber>OO.C.A0000.Report.Rsp</itemNumber>
+        <feature>Does the device implement sending global report attribute command requests and receiving reports for the OnOff attribute?</feature>
+        <reference>3.8.2.7</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="OO.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+		<commandsGenerated>
+			<picsItem>
+				<itemNumber>OO.C.C00.Tx</itemNumber>
+				<feature>Does the device implement sending the Off command?</feature>
+				<reference>Table 3.43</reference>
+				<reference>3.8.2.3.1</reference>
+				<status cond="OO.C">O</status>
+				<support>true</support>
+			</picsItem>
+      <picsItem>
+        <itemNumber>OO.C.C01.Tx</itemNumber>
+        <feature>Does the device implement sending the On command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.2</reference>
+        <status cond="OO.C">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.C02.Tx</itemNumber>
+        <feature>Does the device implement sending the Toggle command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.3</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.C40.Tx</itemNumber>
+        <feature>Does the device implement sending the Off With Effect command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.4</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.C41.Tx</itemNumber>
+        <feature>Does the device implement sending the On With Recall Global Scene command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.5</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OO.C.C42.Tx</itemNumber>
+        <feature>Does the device implement sending the On With Timed Off command?</feature>
+        <reference>Table 3.43</reference>
+        <reference>3.8.2.3.6</reference>
+        <status cond="OO.C">O</status>
+        <support>false</support>
+      </picsItem>
+    </commandsGenerated>
+	</clusterSide>
+</clusterPICS>

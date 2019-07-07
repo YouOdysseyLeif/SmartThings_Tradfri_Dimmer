@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+
+Power Configuration cluster (0x0406) XML PICS
+ZigBee Document 16-02815-002
+July 12th, 2016
+
+Copyright (c) ZigBee Alliance, Inc. (1996-2016).  All rights reserved.
+508 Second Street, Suite 206 Davis, CA 95616 - USA
+http://www.zigbee.org
+
+Permission is granted to members of the ZigBee Alliance to reproduce this document
+for their own use or the use of other ZigBee Alliance members only, provided this
+notice is included.  All other rights reserved.  Duplication for sale, or for
+commercial or for-profit use is strictly prohibited without the prior written consent
+of the ZigBee Alliance.
+
+Accepted by
+===========
+This document has not been accepted for release by the ZigBee Alliance Board of
+Directors
+
+Abstract
+========
+This document contains the XML PICS for the Power Configuraton cluster according to
+the generic XML PICS schema: 16-03902-003-Generic-PICS-XML-Schema.xsd
+
+Notice of use and disclosure
+============================
+Copyright © ZigBee Alliance, Inc. (1996-2016). All rights Reserved. This information
+within this document is the property of the ZigBee Alliance and its use and
+disclosure are restricted.
+
+Elements of ZigBee Alliance specifications may be subject to third party intellectual
+property rights, including without limitation, patent, copyright or trademark rights
+(such a third party may or may not be a member of ZigBee). ZigBee is not responsible
+and shall not be held responsible in any manner for identifying or failing to identify
+any or all such third party intellectual property rights.
+
+No right to use any ZigBee name, logo or trademark is conferred herein.  Use of any
+ZigBee name, logo or trademark requires membership in the ZigBee Alliance and
+compliance with the ZigBee Logo and Trademark Policy and related ZigBee policies.
+
+This document and the information contained herein are provided on an “AS IS” basis
+and ZigBee DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+(A) ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS
+OF THIRD PARTIES (INCLUDING WITHOUT LIMITATION ANY INTELLECTUAL PROPERTY RIGHTS
+INCLUDING PATENT, COPYRIGHT OR TRADEMARK RIGHTS) OR (B) ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NONINFRINGEMENT. IN NO
+EVENT WILL ZIGBEE BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OF
+DATA, INTERRUPTION OF BUSINESS, OR FOR ANY OTHER DIRECT, INDIRECT, SPECIAL OR
+EXEMPLARY, INCIDENTIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF ANY KIND, IN CONTRACT OR
+IN TORT, IN CONNECTION WITH THIS DOCUMENT OR THE INFORMATION CONTAINED HEREIN, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. All Company, brand and product
+names may be trademarks that are the sole property of their respective owners.  
+
+The above notice and this paragraph must be included on all copies of this document
+that are made.
+
+PICS Completion Notes
+=====================
+In each <support></support> item use:
+  "true"  if the feature is supported, OR
+  "false" if the feature is NOT supported
+By default all items are not supported (false)
+    
+--><clusterPICS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://./16-03902-003-Generic-PICS-XML-Schema.xsd">
+  <!-- General cluster information -->
+	<name>Power Configuration</name>
+	<clusterId>0x0001</clusterId>
+	<picsRoot>PC</picsRoot>
+  <!-- Cluster usage -->
+	<usage>
+		<picsItem>
+			<itemNumber>PC.S</itemNumber>
+			<feature>Does the device implement the power configuration cluster as a server?</feature>
+			<reference>3.3.2</reference>
+			<status>O</status>
+			<support>true</support>
+		</picsItem>
+		<picsItem>
+			<itemNumber>PC.C</itemNumber>
+			<feature>Does the device implement the power configuration cluster as a client?</feature>
+			<reference>3.3</reference>
+			<status>O</status>
+			<support>false</support>
+		</picsItem>
+	</usage>
+  <!-- Server side -->
+	<clusterSide type="server">
+		<attributes>
+      <picsItem>
+        <itemNumber>PC.S.A0000</itemNumber>
+        <feature>Does the device implement the MainsVoltage attribute?</feature>
+        <reference>Table 3.15</reference>
+        <reference>3.3.2.2.1.1</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0001</itemNumber>
+        <feature>Does the device implement the MainsFrequency attribute?</feature>
+        <reference>Table 3.15</reference>
+        <reference>3.3.2.2.1.2</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0010</itemNumber>
+        <feature>Does the device implement the MainsAlarmMask attribute?</feature>
+        <reference>Table 3.16</reference>
+        <reference>3.3.2.2.2.1</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0011</itemNumber>
+        <feature>Does the device implement the MainsVoltageMinThreshold attribute?</feature>
+        <reference>Table 3.16</reference>
+        <reference>3.3.2.2.2.2</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0012</itemNumber>
+        <feature>Does the device implement the MainsVoltageMaxThreshold attribute?</feature>
+        <reference>Table 3.16</reference>
+        <reference>3.3.2.2.2.3</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0013</itemNumber>
+        <feature>Does the device implement the MainsVoltageDwellTripPoint attribute?</feature>
+        <reference>Table 3.16</reference>
+        <reference>3.3.2.2.2.4</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0020</itemNumber>
+        <feature>Does the device implement the BatteryVoltage attribute?</feature>
+        <reference>Table 3.18</reference>
+        <reference>3.3.2.2.3.1</reference>
+        <status cond="PC.S">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0021</itemNumber>
+        <feature>Does the device implement the BatteryPercentageRemaining attribute?</feature>
+        <reference>Table 3.18</reference>
+        <reference>3.3.2.2.3.2</reference>
+        <status cond="PC.S">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0030</itemNumber>
+        <feature>Does the device implement the BatteryManufacturer attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.1</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0031</itemNumber>
+        <feature>Does the device implement the BatterySize attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.2</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0032</itemNumber>
+        <feature>Does the device implement the BatteryAHrRating attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.3</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0033</itemNumber>
+        <feature>Does the device implement the BatteryQuantity attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.4</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0034</itemNumber>
+        <feature>Does the device implement the BatteryRatedVoltage attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.5</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0035</itemNumber>
+        <feature>Does the device implement the BatteryAlarmMask attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0036</itemNumber>
+        <feature>Does the device implement the BatteryVoltageMinThreshold attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.7</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0037</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold1 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0038</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold2 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0039</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold3 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A003a</itemNumber>
+        <feature>Does the device implement the BatteryPercentageMinThreshold attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.9</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A003b</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold1 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.10</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A003c</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold2 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.10</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A003d</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold3 attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.10</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A003e</itemNumber>
+        <feature>Does the device implement the BatteryAlarmState attribute?</feature>
+        <reference>Table 3.19</reference>
+        <reference>3.3.2.2.4.11</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0040</itemNumber>
+        <feature>Does the device implement the BatteryVoltage attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.5</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0041</itemNumber>
+        <feature>Does the device implement the BatteryPercentageRemaining attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.5</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0050</itemNumber>
+        <feature>Does the device implement the BatteryManufacturer attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0051</itemNumber>
+        <feature>Does the device implement the BatterySize attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0052</itemNumber>
+        <feature>Does the device implement the BatteryAHrRating attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0053</itemNumber>
+        <feature>Does the device implement the BatteryQuantity attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0054</itemNumber>
+        <feature>Does the device implement the BatteryRatedVoltage attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0055</itemNumber>
+        <feature>Does the device implement the BatteryAlarmMask attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0056</itemNumber>
+        <feature>Does the device implement the BatteryVoltageMinThreshold attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0057</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold1 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0058</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold2 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0059</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold3 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A005a</itemNumber>
+        <feature>Does the device implement the BatteryPercentageMinThreshold attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A005b</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold1 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A005c</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold2 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A005d</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold3 attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A005e</itemNumber>
+        <feature>Does the device implement the BatteryAlarmState attribute for a secondary bank/cell?</feature>
+        <reference>3.3.2.2.6</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0060</itemNumber>
+        <feature>Does the device implement the BatteryVoltage attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.7</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0061</itemNumber>
+        <feature>Does the device implement the BatteryPercentageRemaining attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.7</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0070</itemNumber>
+        <feature>Does the device implement the BatteryManufacturer attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0071</itemNumber>
+        <feature>Does the device implement the BatterySize attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0072</itemNumber>
+        <feature>Does the device implement the BatteryAHrRating attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0073</itemNumber>
+        <feature>Does the device implement the BatteryQuantity attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0074</itemNumber>
+        <feature>Does the device implement the BatteryRatedVoltage attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0075</itemNumber>
+        <feature>Does the device implement the BatteryAlarmMask attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0076</itemNumber>
+        <feature>Does the device implement the BatteryVoltageMinThreshold attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0077</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold1 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0078</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold2 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A0079</itemNumber>
+        <feature>Does the device implement the BatteryVoltageThreshold3 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A007a</itemNumber>
+        <feature>Does the device implement the BatteryPercentageMinThreshold attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A007b</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold1 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A007c</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold2 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A007d</itemNumber>
+        <feature>Does the device implement the BatteryPercentageThreshold3 attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.A007e</itemNumber>
+        <feature>Does the device implement the BatteryAlarmState attribute for a tertiary bank/cell?</feature>
+        <reference>3.3.2.2.8</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="PC.S">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.S.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="PC.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+	</clusterSide>
+  <!-- Client side -->
+	<clusterSide type="client">
+    <attributes>
+      <picsItem>
+        <itemNumber>PC.C.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="PC.C">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>PC.C.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="PC.C">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+	</clusterSide>
+</clusterPICS>

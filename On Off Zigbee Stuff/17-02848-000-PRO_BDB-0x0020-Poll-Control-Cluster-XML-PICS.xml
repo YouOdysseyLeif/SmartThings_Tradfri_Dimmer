@@ -1,0 +1,241 @@
+<!--
+
+Poll Control cluster (0x0020) XML PICS
+ZigBee Document 
+April 21st, 2017
+
+Copyright (c) ZigBee Alliance, Inc. (1996-2017).  All rights reserved.
+508 Second Street, Suite 206 Davis, CA 95616 - USA
+http://www.zigbee.org
+
+Permission is granted to members of the ZigBee Alliance to reproduce this document
+for their own use or the use of other ZigBee Alliance members only, provided this
+notice is included.  All other rights reserved.  Duplication for sale, or for
+commercial or for-profit use is strictly prohibited without the prior written consent
+of the ZigBee Alliance.
+
+Accepted by
+===========
+This document has not been accepted for release by the ZigBee Alliance Board of
+Directors
+
+Abstract
+========
+This document contains the XML PICS for the Poll Control cluster according to the generic
+XML PICS schema: 16-03902-003-Generic-PICS-XML-Schema.xsd
+
+Notice of use and disclosure
+============================
+Copyright © ZigBee Alliance, Inc. (1996-2016). All rights Reserved. This information
+within this document is the property of the ZigBee Alliance and its use and
+disclosure are restricted.
+
+Elements of ZigBee Alliance specifications may be subject to third party intellectual
+property rights, including without limitation, patent, copyright or trademark rights
+(such a third party may or may not be a member of ZigBee). ZigBee is not responsible
+and shall not be held responsible in any manner for identifying or failing to identify
+any or all such third party intellectual property rights.
+
+No right to use any ZigBee name, logo or trademark is conferred herein.  Use of any
+ZigBee name, logo or trademark requires membership in the ZigBee Alliance and
+compliance with the ZigBee Logo and Trademark Policy and related ZigBee policies.
+
+This document and the information contained herein are provided on an “AS IS” basis
+and ZigBee DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+(A) ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS
+OF THIRD PARTIES (INCLUDING WITHOUT LIMITATION ANY INTELLECTUAL PROPERTY RIGHTS
+INCLUDING PATENT, COPYRIGHT OR TRADEMARK RIGHTS) OR (B) ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NONINFRINGEMENT. IN NO
+EVENT WILL ZIGBEE BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OF
+DATA, INTERRUPTION OF BUSINESS, OR FOR ANY OTHER DIRECT, INDIRECT, SPECIAL OR
+EXEMPLARY, INCIDENTIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF ANY KIND, IN CONTRACT OR
+IN TORT, IN CONNECTION WITH THIS DOCUMENT OR THE INFORMATION CONTAINED HEREIN, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. All Company, brand and product
+names may be trademarks that are the sole property of their respective owners.  
+
+The above notice and this paragraph must be included on all copies of this document
+that are made.
+
+PICS Completion Notes
+=====================
+In each <support></support> item use:
+  "true"  if the feature is supported, OR
+  "false" if the feature is NOT supported
+By default all items are not supported (false)
+   
+--><clusterPICS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://./16-03902-003-Generic-PICS-XML-Schema.xsd">
+  <!-- General cluster information -->
+	<name>PollControl</name>
+	<clusterId>0x0020</clusterId>
+	<picsRoot>POLL</picsRoot>
+  <!-- Cluster usage -->
+	<usage>
+		<picsItem>
+			<itemNumber>POLL.S</itemNumber>
+			<feature>Does the device implement the Poll Control cluster as a server?</feature>
+			<reference>3.16.4</reference>
+			<status>O</status>
+			<support>true</support>
+		</picsItem>
+		<picsItem>
+			<itemNumber>POLL.C</itemNumber>
+			<feature>Does the device implement the Poll Control cluster as a client?</feature>
+			<reference>3.16.5</reference>
+			<status>O</status>
+			<support>false</support>
+		</picsItem>
+	</usage>
+  <!-- Server side -->
+	<clusterSide type="server">
+		<attributes>
+			<picsItem>
+				<itemNumber>POLL.S.A0000</itemNumber>
+				<feature>Does the device implement the Check-in Interval attribute?</feature>
+				<reference>3.16.4.1.1</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0001</itemNumber>
+				<feature>Does the device implement the Long Poll Interval attribute?</feature>
+				<reference>3.16.4.1.2</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0002</itemNumber>
+				<feature>Does the device implement the Short Poll Interval attribute?</feature>
+				<reference>3.16.4.1.3</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0003</itemNumber>
+				<feature>Does the device implement the Fast Poll Timeout attribute?</feature>
+				<reference>3.16.4.1.4</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0004</itemNumber>
+				<feature>Does the device implement the Check-in Interval Min attribute?</feature>
+				<reference>3.16.4.1.5</reference>
+				<status cond="POLL.S">O</status>
+				<support>false</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0005</itemNumber>
+				<feature>Does the device implement the Long Poll Interval Min attribute?</feature>
+				<reference>3.16.4.1.6</reference>
+				<status cond="POLL.S">O</status>
+				<support>false</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.A0006</itemNumber>
+				<feature>Does the device implement the Fast Poll Timeout Max attribute?</feature>
+				<reference>3.16.4.1.7</reference>
+				<status cond="POLL.S">O</status>
+				<support>false</support>
+			</picsItem>
+      <picsItem>
+        <itemNumber>POLL.S.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>3.16.4.1.8</reference>
+        <status cond="POLL.S">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>POLL.S.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>3.16.4.1.9</reference>
+        <status cond="POLL.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+		<commandsReceived>
+			<picsItem>
+				<itemNumber>POLL.S.C00.Rsp</itemNumber>
+				<feature>Does the device implement receiving the Check-in Response command?</feature>
+				<reference>3.16.5.3</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.C01.Rsp</itemNumber>
+				<feature>Does the device implement receiving the Fast Poll Stop command?</feature>
+				<reference>3.16.5.4</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.C02.Rsp</itemNumber>
+				<feature>Does the device implement receiving the Set Long Poll Interval command?</feature>
+				<reference>3.16.5.5</reference>
+				<status cond="POLL.S">O</status>
+				<support>true</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.S.C03.Rsp</itemNumber>
+				<feature>Does the device implement receiving the Set Short Poll Interval command?</feature>
+				<reference>3.16.5.6</reference>
+				<status cond="POLL.S">O</status>
+				<support>true</support>
+			</picsItem>
+    </commandsReceived>
+		<commandsGenerated>
+			<picsItem>
+				<itemNumber>POLL.S.C00.Tx</itemNumber>
+				<feature>Does the device implement sending the Check-in command?</feature>
+				<reference>3.16.4.4</reference>
+				<status cond="POLL.S">M</status>
+				<support>true</support>
+			</picsItem>
+    </commandsGenerated>
+	</clusterSide>
+  <!-- Client side -->
+	<clusterSide type="client">
+    <attributes>
+    </attributes>
+    <commandsReceived>
+      <picsItem>
+			  <itemNumber>POLL.C.C00.Rsp</itemNumber>
+			  <feature>Does the device implement receiving the Check-in command?</feature>
+			  <reference>3.16.4.4</reference>
+			  <status cond="POLL.C">M</status>
+			  <support>false</support>
+		  </picsItem>
+    </commandsReceived>
+		<commandsGenerated>
+			<picsItem>
+				<itemNumber>POLL.C.C00.Tx</itemNumber>
+				<feature>Does the device implement sending the Check-in Response command?</feature>
+				<reference>3.16.5.3</reference>
+				<status cond="POLL.C">M</status>
+				<support>false</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.C.C01.Tx</itemNumber>
+				<feature>Does the device implement sending the Fast Poll Stop command?</feature>
+				<reference>3.16.5.4</reference>
+				<status cond="POLL.C">M</status>
+				<support>false</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.C.C02.Tx</itemNumber>
+				<feature>Does the device implement sending the Set Long Poll Interval command?</feature>
+				<reference>3.16.5.5</reference>
+				<status cond="POLL.C">O</status>
+				<support>false</support>
+			</picsItem>
+			<picsItem>
+				<itemNumber>POLL.C.C03.Tx</itemNumber>
+				<feature>Does the device implement sending the Set Short Poll Interval command?</feature>
+				<reference>3.16.5.6</reference>
+				<status cond="POLL.C">O</status>
+				<support>false</support>
+			</picsItem>
+    </commandsGenerated>
+	</clusterSide>
+</clusterPICS>

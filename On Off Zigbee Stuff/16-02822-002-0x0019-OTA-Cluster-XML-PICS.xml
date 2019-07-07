@@ -1,0 +1,581 @@
+<!--
+
+OTA cluster (0x0019) XML PICS
+ZigBee Document 16-02822-002
+May 9th, 2017
+
+Copyright (c) ZigBee Alliance, Inc. (1996-2016).  All rights reserved.
+508 Second Street, Suite 206 Davis, CA 95616 - USA
+http://www.zigbee.org
+
+Permission is granted to members of the ZigBee Alliance to reproduce this document
+for their own use or the use of other ZigBee Alliance members only, provided this
+notice is included.  All other rights reserved.  Duplication for sale, or for
+commercial or for-profit use is strictly prohibited without the prior written consent
+of the ZigBee Alliance.
+
+Accepted by
+===========
+This document has not been accepted for release by the ZigBee Alliance Board of
+Directors
+
+Abstract
+========
+This document contains the XML PICS for the OTA cluster according to the generic
+XML PICS schema: 16-03902-003-Generic-PICS-XML-Schema.xsd
+
+Notice of use and disclosure
+============================
+Copyright © ZigBee Alliance, Inc. (1996-2016). All rights Reserved. This information
+within this document is the property of the ZigBee Alliance and its use and
+disclosure are restricted.
+
+Elements of ZigBee Alliance specifications may be subject to third party intellectual
+property rights, including without limitation, patent, copyright or trademark rights
+(such a third party may or may not be a member of ZigBee). ZigBee is not responsible
+and shall not be held responsible in any manner for identifying or failing to identify
+any or all such third party intellectual property rights.
+
+No right to use any ZigBee name, logo or trademark is conferred herein.  Use of any
+ZigBee name, logo or trademark requires membership in the ZigBee Alliance and
+compliance with the ZigBee Logo and Trademark Policy and related ZigBee policies.
+
+This document and the information contained herein are provided on an “AS IS” basis
+and ZigBee DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+(A) ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS
+OF THIRD PARTIES (INCLUDING WITHOUT LIMITATION ANY INTELLECTUAL PROPERTY RIGHTS
+INCLUDING PATENT, COPYRIGHT OR TRADEMARK RIGHTS) OR (B) ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR NONINFRINGEMENT. IN NO
+EVENT WILL ZIGBEE BE LIABLE FOR ANY LOSS OF PROFITS, LOSS OF BUSINESS, LOSS OF USE OF
+DATA, INTERRUPTION OF BUSINESS, OR FOR ANY OTHER DIRECT, INDIRECT, SPECIAL OR
+EXEMPLARY, INCIDENTIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES OF ANY KIND, IN CONTRACT OR
+IN TORT, IN CONNECTION WITH THIS DOCUMENT OR THE INFORMATION CONTAINED HEREIN, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH LOSS OR DAMAGE. All Company, brand and product
+names may be trademarks that are the sole property of their respective owners.  
+
+The above notice and this paragraph must be included on all copies of this document
+that are made.
+
+PICS Completion Notes
+=====================
+In each <support></support> item use:
+  "true"  if the feature is supported, OR
+  "false" if the feature is NOT supported
+By default all items are not supported (false)
+    
+--><clusterPICS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file://./16-03902-003-Generic-PICS-XML-Schema.xsd">
+  <!-- General cluster information -->
+	<name>OTA</name>
+	<clusterId>0x0019</clusterId>
+	<picsRoot>OTA</picsRoot>
+  <!-- Cluster usage -->
+	<usage>
+		<picsItem>
+			<itemNumber>OTA.S</itemNumber>
+			<feature>Does the device implement the OTA cluster as a server?</feature>
+			<reference>11.8.1</reference>
+			<status>O</status>
+			<support>false</support>
+		</picsItem>
+		<picsItem>
+			<itemNumber>OTA.C</itemNumber>
+			<feature>Does the device implement the OTA cluster as a client?</feature>
+			<reference>11.8.1</reference>
+			<status>O</status>
+			<support>true</support>
+		</picsItem>
+	</usage>
+  <!-- Server side -->
+	<clusterSide type="server">
+		<attributes>
+      <picsItem>
+        <itemNumber>OTA.S.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="OTA.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+		<commandsReceived>
+      <picsItem>
+        <itemNumber>OTA.S.C01.Rsp</itemNumber>
+        <feature>[Formerly OIMPS1] Does the device implement receiving the Query Next Image Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.4</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C03.Rsp</itemNumber>
+        <feature>[Formerly OIMPS2] Does the device implement receiving the Image Block Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.6</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C04.Rsp</itemNumber>
+        <feature>[Formerly OIMPS4] Does the device implement receiving the Image page Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.7</reference>
+        <status cond="OTA.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C06.Rsp</itemNumber>
+        <feature>[Formerly OIMPS3] Does the device implement receiving the Update End Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.9</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C08.Rsp</itemNumber>
+        <feature>[Formerly OIMPS5] Does the device implement receiving the Query Device Specific File Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.10</reference>
+        <status cond="OTA.S">O</status>
+        <support>false</support>
+      </picsItem>
+    </commandsReceived>
+		<commandsGenerated>
+      <picsItem>
+        <itemNumber>OTA.S.C00.Tx</itemNumber>
+        <feature>[Formerly OOMTS1] Does the device implement sending the Image Notify command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.3</reference>
+        <status cond="OTA.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C02.Tx</itemNumber>
+        <feature>[Formerly OOMTS2] Does the device implement sending the Query Next Image Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.5</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C05.Tx</itemNumber>
+        <feature>[Formerly OOMTS3] Does the device implement sending the Image Block Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.8</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C07.Tx</itemNumber>
+        <feature>[Formerly OOMTS4] Does the device implement sending the Upgrade End Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.9.6</reference>
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.S.C09.Tx</itemNumber>
+        <feature>[Formerly OOMTS5] Does the device implement sending the Query Device Specific File Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.11</reference>
+        <status cond="OTA.S">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OOMTS6</itemNumber>
+        <feature>Does the device send all supported OTA messages using APS encryption (except broadcast messages)?</feature>
+        <reference />
+        <status cond="OTA.S">M</status>
+        <support>false</support>
+      </picsItem>
+    </commandsGenerated>
+	</clusterSide>
+  <!-- Client side -->
+	<clusterSide type="client">
+    <attributes>
+      <picsItem>
+        <itemNumber>OTA.C.A0000</itemNumber>
+        <feature>[Formerly OUA1] Does the device implement the UpgradeServerID attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.1</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0001</itemNumber>
+        <feature>[Formerly OUA2] Does the device implement the FileOffset attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.2</reference>
+        <status cond="OTA.C">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0002</itemNumber>
+        <feature>[Formerly OUA3] Does the device implement the CurrentFileVersion attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.3</reference>
+        <status cond="OTA.C">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0003</itemNumber>
+        <feature>[Formerly OUA4] Does the device implement the CurrentZigBeeStackVersion attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.4</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0004</itemNumber>
+        <feature>[Formerly OUA5] Does the device implement the DownloadedFileVersion attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.5</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0005</itemNumber>
+        <feature>[Formerly OUA6] Does the device implement the DownloadedZigBeeStackVersion attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.6</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0006</itemNumber>
+        <feature>[Formerly OUA7] Does the device implement the ImageUpgradeStatus attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.7</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0007</itemNumber>
+        <feature>[Formerly OUA8] Does the device implement the ManufacturerID attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.8</reference>
+        <status cond="OTA.C">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0008</itemNumber>
+        <feature>[Formerly OUA9] Does the device implement the ImageTypeID attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.9</reference>
+        <status cond="OTA.C">O</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A0009</itemNumber>
+        <feature>[Formerly OUA10] Does the device implement the MinimumBlockPeriod attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.10</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A000a</itemNumber>
+        <feature>[Formerly OUA11] Does the device implement the ImageStamp attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.11</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A000b</itemNumber>
+        <feature>[Formerly OUA12] Does the device implement the UpgradeActivationPolicy attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.12</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.A000c</itemNumber>
+        <feature>[Formerly OUA13] Does the device implement the UpgradeTimeoutPolicy attribute?</feature>
+        <reference>Table 11.10</reference>
+        <reference>11.10.13</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.Afffd</itemNumber>
+        <feature>Does the device implement the ClusterRevision global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.1</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.Afffe</itemNumber>
+        <feature>Does the device implement the AttributeReportingStatus global attribute?</feature>
+        <reference>Table 2-1</reference>
+        <reference>2.3.5.1.2</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+    </attributes>
+    <commandsReceived>
+      <picsItem>
+        <itemNumber>OTA.C.C00.Rsp</itemNumber>
+        <feature>[Formerly OIMPC1] Does the device implement receiving the Image Notify command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.3</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C02.Rsp</itemNumber>
+        <feature>[Formerly OIMPC2] Does the device implement receiving the Query Next Image Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.5</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C05.Rsp</itemNumber>
+        <feature>[Formerly OIMPC3] Does the device implement receiving the Image Block Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.8</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C07.Rsp</itemNumber>
+        <feature>[Formerly OIMPC4] Does the device implement receiving the Update End Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.9.6</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C09.Rsp</itemNumber>
+        <feature>[Formerly OIMPC5] Does the device implement receiving the Query Device Specific File Response command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.11</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+    </commandsReceived>
+		<commandsGenerated>
+      <picsItem>
+        <itemNumber>OTA.C.C01.Tx</itemNumber>
+        <feature>[Formerly OOMTC1] Does the device implement sending the Query Next Image Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.4</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C03.Tx</itemNumber>
+        <feature>[Formerly OOMTC2] Does the device implement sending the Image Block Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.6</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C04.Tx</itemNumber>
+        <feature>[Formerly OOMTC4] Does the device implement sending the Image Page Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.7</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C06.Tx</itemNumber>
+        <feature>[Formerly OOMTC3] Does the device implement sending the Upgrade End Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.9</reference>
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OTA.C.C08.Tx</itemNumber>
+        <feature>[Formerly OOMTC5] Does the device implement sending the Query Device Specific File Request command?</feature>
+        <reference>Table 11.14</reference>
+        <reference>11.13.10</reference>
+        <status cond="OTA.C">O</status>
+        <support>false</support>
+      </picsItem>
+      <picsItem>
+        <itemNumber>OOMTS6</itemNumber>
+        <feature>Does the device send all supported OTA messages using APS encryption (except broadcast messages)?</feature>
+        <reference />
+        <status cond="OTA.C">M</status>
+        <support>true</support>
+      </picsItem>
+    </commandsGenerated>
+	</clusterSide>
+  <!-- Other PICS -->
+  <pics label="ZigBee device type">
+    <picsItem>
+      <itemNumber>ZDC1</itemNumber>
+      <feature>Is the device capable of acting as a ZigBee Coordinator (ZC) or a ZigBee Router (ZR)?</feature>
+      <reference>[ZigBee Specification]</reference>
+      <status>O</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="OTA upgrade image">
+    <picsItem>
+      <itemNumber>OUI1</itemNumber>
+      <feature>Is the OTA upgrade file format supported?</feature>
+      <reference>11.4</reference>
+      <status>M</status>
+      <support>true</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUI2a</itemNumber>
+      <feature>Is the OTA upgrade file format supported with the ECDSA Crypto Suite 1 signature tag?</feature>
+      <reference>11.4.6</reference>
+      <status>O.1</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUI2b</itemNumber>
+      <feature>Is the OTA upgrade file format supported with the ECDSA Crypto Suite 2 signature tag?</feature>
+      <reference>11.4.9</reference>
+      <status>O.1</status>
+      <support>false</support>
+    </picsItem>
+    <note ref="O.1">A device SHALL support OUI2a and/or OUI2b.</note>
+  </pics>
+  <pics label="Server side OTA upgrade policies">
+    <picsItem>
+      <itemNumber>OUPS1</itemNumber>
+      <feature>Does the server support responding to a Query Next Image Request with a response that has a version number higher than in the request (upgrade)?</feature>
+      <reference>11.13.5</reference>
+      <status cond="OTA.S">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPS2</itemNumber>
+      <feature>Does the server support responding to a Query Next Image Request with a response that has a version number lower than in the request (downgrade)?</feature>
+      <reference>11.13.5</reference>
+      <status cond="OTA.S">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPS3</itemNumber>
+      <feature>Does the server support responding to a Query Next Image Request with a response that has a version number the same as in the request (re-install)?</feature>
+      <reference>11.13.5</reference>
+      <status cond="OTA.S">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPS4</itemNumber>
+      <feature>Does the server support sending a Default Response with status of NO_IMAGE_AVAILABLE when it receives an Image Block Request for a file that it does not have?</feature>
+      <reference>11.13.6.5.2</reference>
+      <status cond="OTA.S">M</status>
+      <support>false</support>
+    </picsItem>
+  </pics>
+  <pics label="Client side OTA upgrade policies">
+    <picsItem>
+      <itemNumber>OUPC0a</itemNumber>
+      <feature>Does the device support an in-band mechanism for image activation?</feature>
+      <reference>11.10.12</reference>
+      <status cond="OTA.C">O.2</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC0b</itemNumber>
+      <feature>Does the device support an out-of-scope mechanism for image activation?</feature>
+      <reference>11.10.12</reference>
+      <status cond="OTA.C">O.2</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC1</itemNumber>
+      <feature>Does the device support cryptographic verification of images signed using ECDSA?</feature>
+      <reference />
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC2</itemNumber>
+      <feature>Does the device support aborting an active download on reception of an Image Block Response with a status of ABORT?</feature>
+      <reference>11.13.8</reference>
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC3</itemNumber>
+      <feature>Does the device support an abort after a file has been downloaded on reception of a Default Response with a status of ABORT in response to an Upgrade End Request?</feature>
+      <reference>11.13.9.4</reference>
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC4</itemNumber>
+      <feature>Does the device support processing an Image Block Response with a status of WAIT_FOR_DATA?</feature>
+      <reference>11.13.8.4</reference>
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC5</itemNumber>
+      <feature>Does the device support sending REQUIRE_MORE_IMAGE in the Upgrade End Request after it has finished a download (i.e. does it require multiple images to upgrade)?</feature>
+      <reference>11.13.9.3</reference>
+      <status cond="OTA.C">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC6</itemNumber>
+      <feature>Does the device support a time delayed upgrade sent back from the server in the Upgrade End Response message?</feature>
+      <reference>11.13.9.6.8</reference>
+      <status cond="OUPC0a">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC7</itemNumber>
+      <feature>Does the device support waiting for a separate Upgrade End response command from the OTA server at a later time?  (i.e. the server initially sends an Upgrade End Response with a UpgradeTime value of 0xFFFFFFFF and later sends an Upgrade End Response with a UpgradeTime value other than 0xFFFFFFFF)?</feature>
+      <reference>11.11.4</reference>
+      <status cond="OUPC0a">O</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC8</itemNumber>
+      <feature>Does the device always respond to a unicast Image Notification message from the OTA server?</feature>
+      <reference>11.13.3.4</reference>
+      <status cond="(ZDC1 AND OTA.C)">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC9</itemNumber>
+      <feature>Does the device support periodic discovery of an OTA server if it has not found one previous in the network, at a rate of at least once per day?</feature>
+      <reference />
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC10</itemNumber>
+      <feature>Does the device support periodic query for a new upgrade image at a rate of at least once per day?</feature>
+      <reference />
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC11</itemNumber>
+      <feature>Does the device support sending new Image Block Request commands when it is downloading a new image at a rate of at least once per hour?</feature>
+      <reference />
+      <status cond="OTA.C">M</status>
+      <support>false</support>
+    </picsItem>
+    <picsItem>
+      <itemNumber>OUPC12</itemNumber>
+      <feature>Does the device accept images with a lower version number (downgrade)?</feature>
+      <reference />
+      <status cond="OTA.C">O</status>
+      <support>false</support>
+    </picsItem>
+    <note ref="O.2">A device SHALL support OUPC0a or OUPC0b.</note>
+  </pics>
+</clusterPICS>
